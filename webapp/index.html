@@ -2,87 +2,92 @@
 <html>
     <head>
       <title>vuelaFacil</title>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+      <link rel="stylesheet" href="assets/css/estilos.css"/>  
+      <link rel="shortcut icon" href= "assets/img/favicon.ico"/> 
+      <link rel="" href="https://fonts.googleapis.com">
+      <link rel="" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
-    <body>
-      <div style="display:flex;">
-        <div style="width:30%; height:97vh; background:#365F95;">
-          
-          <div style="display:flex;">
-            <div style="width:20%;">
-              <img src="assets/img/logo-blanco.png" style="width:100%;" alt="logo vuelaFacil">
+    <body class="body-fondo">
+      <div class="d-flex">
+        <div class="contenedor-buscador">          
+          <div class="d-flex">
+            <div style="width:18%; margin-right:20px;">
+              <img src="./assets/img/logo-blanco.png" style="width:100%;" alt="logo vuelaFacil">
             </div>
-            <div>
-              <p style="color:#fff;">Volar nunca había sido tan fácil</p>
+            <div class="d-flex" style="align-items:center;">
+              <p>Volar nunca había sido tan fácil</p>
             </div>
           </div>
           
-          <div style="display:flex;">
-            <div style="display:flex;">
-              <input type="radio">
-              <label>Ida y vuelta</label>
-            </div>
-            <div style="display:flex;">
+          <div class="d-flex justify-content-center" style="margin-top:40px; margin-bottom:30px;">
+            <div class="d-flex" style="margin-right:30px;">
               <input type="radio">
               <label>Ida</label>
+            </div>
+            <div class="d-flex">
+              <input type="radio">
+              <label>Ida y vuelta</label>
             </div>   
           </div>
           
-          <div style="display:flex;">
-            <div>
-              <label>Origen</label>
-              <select>
+          <div class="d-flex" style="margin-bottom:20px;">
+            <div style="width:50%;">
+              <label style="display:block;">Origen</label>
+              <select style="width:90%;">
                 <option>seleccione origen</option>
               </select>
             </div>
-            <div>
-              <label>Destino</label>
-              <select>
+            <div style="width:50%;">
+              <label style="display:block;">Destino</label>
+              <select style="width:90%;">
                 <option>seleccione destino</option>
               </select>
             </div>
           </div>
           
-          <div style="display:flex;">
-            <div>
-              <label>Fecha de salida</label>
-              <input type="date">
+          <div class="d-flex" style="margin-bottom:20px;">
+            <div style="width:50%;">
+              <label style="display:block;">Fecha de salida</label>
+              <input type="date" style="width:90%;">
             </div>
-            <div>
-              <label>Fecha de regreso</label>
-              <input type="date">
+            <div style="width:50%;">
+              <label style="display:block;">Fecha de regreso</label>
+              <input type="date" style="width:90%;">
             </div>
           </div>
           
-          <div>
+          <div style="margin-bottom:10px;">
             <label>Cantidad de pasajeros</label>
           </div>
           
-          <div style="display:flex;">            
-            <div>
-              <label>Adultos: </label>
-              <input type="number">
+          <div class="d-flex" style="margin-bottom:40px;">            
+            <div style="width:40%;">
+              <label style="display:block;">Adultos: </label>
+              <input type="number" style="width:90%;">
             </div>
-            <div>
-              <label>Niños: </label>
-              <input type="number">
+            <div style="width:40%;">
+              <label style="display:block;">Niños: </label>
+              <input type="number" style="width:90%;">
             </div>
           </div>
           
-          <div style="display:flex; justify-content:center;">            
-            <div>
-              <input type="button" value="Buscar">
+          <div class="d-flex justify-content-center">            
+            <div style="width:40%;">
+              <input type="button" value="Buscar" style="width:100%;">
             </div>
           </div>
           
         </div>
-        <div style="width:70%; height:97vh;">
+        <div class="contenedor-derecho">
           <header>
-            <div style="display: flex; justify-content: flex-end;">
+            <div class="d-flex justify-content-end">
               <input type="button" value="Login">
             </div>
           </header>
-          <nav style="display: flex; justify-content: flex-end;">
+          <nav class="d-flex justify-content-end">
             <ul style="display: flex;">
               <li>Inicio &nbsp; &nbsp; &nbsp;</li> 
               <li>Reservas &nbsp; &nbsp; &nbsp;</li>
@@ -90,11 +95,11 @@
             </ul>
           </nav>
       
-          <main style="height:80%;">
-            <img src="assets/img/avion.png" style="width:100%;" alt="despegue">
+          <main style="height:87%;">
+            
           </main>
       
-          <footer style="display: flex; justify-content: center;">
+          <footer class="d-flex justify-content-center">
             <p>Copyright © 2021 VuelaFacil. Todos los derechos reservados</p>
           </footer>
         </div>
