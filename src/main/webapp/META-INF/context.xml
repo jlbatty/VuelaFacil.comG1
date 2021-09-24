@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/vuelaFacil"/>
+<Context>
+    <Resource 
+        name="jdbc/vuelafacil"
+        auth="Container"
+        type="javax.sql.DataSource"
+        username="yotis"
+        password="MY[vCLf)Tub+i6V"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql:/127.0.0.1:3306/vuelafacil"
+        maxActive="15"
+        maxIdle="3"
+    />
+</Context>
+<!--mirar en url: url="jdbc:mysql:/[yourserver]:3306/[yourapplication]" cual es el nombre de la aplicacion. -->
