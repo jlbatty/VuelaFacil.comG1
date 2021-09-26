@@ -3,99 +3,121 @@
     <head>
       <title>vuelaFacil</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-      <link rel="stylesheet" href="assets/css/estilos.css"/>  
-      <link rel="shortcut icon" href= "assets/img/favicon.ico"/> 
-      <link rel="" href="https://fonts.googleapis.com">
-      <link rel="" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>       
+      <link rel="shortcut icon" href= "./assets/img/favicon.ico"/> 
+      <link href="./assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" href="assets/css/estilos.css"/>        
     </head>
     <body class="body-fondo">
       <div class="d-flex">
-        <div class="contenedor-buscador">          
+        <div class="vh-100 py-3 px-3 fs-6 text-light contenedor-buscador">          
           <div class="d-flex">
-            <div style="width:18%; margin-right:20px;">
-              <img src="./assets/img/logo-blanco.png" style="width:100%;" alt="logo vuelaFacil">
+            <div class="w-15 me-4">
+              <img src="./assets/img/logo-blanco.png" class="w-100" alt="logo vuelaFacil">
             </div>
-            <div class="d-flex" style="align-items:center;">
+            <div class="d-flex fw-bold fst-italic align-items-center">
               <p>Volar nunca había sido tan fácil</p>
             </div>
           </div>
           
-          <div class="d-flex justify-content-center" style="margin-top:40px; margin-bottom:30px;">
-            <div class="d-flex" style="margin-right:30px;">
-              <input type="radio">
-              <label>Ida</label>
-            </div>
-            <div class="d-flex">
-              <input type="radio">
-              <label>Ida y vuelta</label>
-            </div>   
+          <div class="d-flex justify-content-center mt-5 mb-4">
+            <div class="d-inline-flex w-70 radio">
+              <input class="radio-input" type="radio" value="true" name="ida" id="ida"> 
+              <label for="ida" class="radio-label">Ida</label>
+              <input class="radio-input" type="radio" value="false" name="ida" id="idaVuelta">  
+              <label for="idaVuelta" class="radio-label">Ida y vuelta</label>
+            </div>              
           </div>
           
-          <div class="d-flex" style="margin-bottom:20px;">
-            <div style="width:50%;">
-              <label style="display:block;">Origen</label>
-              <select style="width:90%;">
-                <option>seleccione origen</option>
+          <div class="d-flex mb-4">
+            <div class="w-50">
+              <label class="d-block" for="origen">Origen</label>
+              <select class="w-90 form-select" id="origen">
+                <option value="">seleccione origen</option>
               </select>
             </div>
-            <div style="width:50%;">
-              <label style="display:block;">Destino</label>
-              <select style="width:90%;">
+            <div class="w-50">
+              <label class="d-block" for="destino">Destino</label>
+              <select class="w-90 form-select" id="destino">
                 <option>seleccione destino</option>
               </select>
             </div>
           </div>
           
-          <div class="d-flex" style="margin-bottom:20px;">
-            <div style="width:50%;">
-              <label style="display:block;">Fecha de salida</label>
-              <input type="date" style="width:90%;">
+          <div class="d-flex mb-4">
+            <div class="w-50">
+              <label class="d-block " for="fechaSalida">Fecha de salida</label>
+              <input type="date" id="fechaSalida" class="w-90 form-control">
             </div>
-            <div style="width:50%;">
-              <label style="display:block;">Fecha de regreso</label>
-              <input type="date" style="width:90%;">
+            <div class="w-50">
+              <label class="d-block" for="fechaRegreso">Fecha de regreso</label>
+              <input type="date" id="fechaRegreso" class="w-90 form-control">
             </div>
           </div>
           
-          <div style="margin-bottom:10px;">
+          <div class="mb-2">
             <label>Cantidad de pasajeros</label>
           </div>
           
-          <div class="d-flex" style="margin-bottom:40px;">            
-            <div style="width:40%;">
-              <label style="display:block;">Adultos: </label>
-              <input type="number" style="width:90%;">
+          <div class="d-flex mb-5">            
+            <div class="w-40">
+              <label for="adultos" class="d-block">Adultos: </label>
+              <input id="adultos" type="number" class="w-90 form-control">
             </div>
-            <div style="width:40%;">
-              <label style="display:block;">Niños: </label>
-              <input type="number" style="width:90%;">
+            <div class="w-40">
+              <label for="infantes" class="d-block">Niños: </label>
+              <input id="infantes" type="number" class="w-90 form-control">
             </div>
           </div>
           
           <div class="d-flex justify-content-center">            
-            <div style="width:40%;">
-              <input type="button" value="Buscar" style="width:100%;">
+            <div class="w-40">
+              <input type="button" value="Buscar" class="w-100 btn btn-primary boton">
             </div>
           </div>
           
         </div>
-        <div class="contenedor-derecho">
-          <header>
-            <div class="d-flex justify-content-end">
-              <input type="button" value="Login">
+        <div class="vh-100 py-3 px-3 contenedor-derecho">
+          <header class="mb-3">
+            <div class="d-flex justify-content-end">     
+              <div class="dropdown">
+                <a href="#" class="fw-bold text-decoration-none text-dark dropdown-toggle" id="dropdownLogin" 
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="me-1">
+                    <img class="icono" src="./assets/img/user.png" alt="icon-user"/>
+                  </span>                
+                  LogIn
+                </a>                
+                <div class="dropdown-menu p-2" aria-labelledby="dropdownLogin">
+                  <label class="w-100 text-center">LogIn</label>
+                  <div class="w-100 px-2 mt-2 mb-2">
+                    <label for="usuario" class="d-block">Usuario </label>
+                    <input id="usuario" type="text" class="form-control">
+                  </div>
+                  <div class="w-100 px-2 mb-2">
+                    <label for="pass" class="d-block">Contraseña </label>
+                    <input id="pass" type="password" class="form-control">
+                  </div>
+                  <div class="w-100 px-2 mt-2 mb-2">
+                    <input type="button" value="Iniciar sesión" class="w-100 btn btn-primary boton">
+                  </div>
+                </div>
+              </div>  
             </div>
           </header>
-          <nav class="d-flex justify-content-end">
-            <ul style="display: flex;">
-              <li>Inicio &nbsp; &nbsp; &nbsp;</li> 
-              <li>Reservas &nbsp; &nbsp; &nbsp;</li>
-              <li>Nosotros</li>
-            </ul>
+          <nav class="nav navbar-light justify-content-end bg-claro">
+            <a href="#" class="nav-link">
+              Inicio
+            </a>
+            <a href="#" class="nav-link">
+              Reservas
+            </a>
+            <a href="#" class="nav-link">
+              Nosotros
+            </a>            
           </nav>
-      
-          <main style="height:87%;">
+          
+          <main style="height:85%;">
             
           </main>
       
@@ -104,5 +126,6 @@
           </footer>
         </div>
       </div> 
+      <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
     </body>
 </html>
