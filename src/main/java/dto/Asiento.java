@@ -12,7 +12,6 @@ package dto;
 public class Asiento {
   String idAsiento;
   String categoría;
-  //¿Cómo se cuando un asiento esta reservado o no?
 
   public Asiento() {
   }
