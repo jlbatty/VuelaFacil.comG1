@@ -1,0 +1,37 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navbar_logo--text {
+  color: rgb(224, 220, 220);
+  font-size: 14px;
+}
+.navbar-items {
+  flex-grow: 0;
+}
+.user-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.navbar__items {
+  justify-content: end;
+}
+.navbar__item {
+  color: rgb(224, 220, 220);
+}
+footer {
+  justify-content: space-between;
+}
+.dropdown-toggle::after {
+  color: aliceblue;
+}
+@media screen and (max-width: 768px) {
+  footer {
+    justify-content: center;
+  }
+}
