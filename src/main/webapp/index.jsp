@@ -105,7 +105,7 @@
 
                 <div class="d-flex justify-content-center">            
                     <div class="w-40">
-                        <input type="button" value="Buscar" class="w-100 btn btn-primary boton">
+                        <a class="w-100 btn btn-primary boton" href="vuelos.jsp" role="button">Buscar</a>
                     </div>
                 </div>
 
@@ -143,13 +143,13 @@
 
                 </header>
                 <nav class="nav navbar-light justify-content-end bg-claro">
-                    <a href="#" class="fw-medium nav-link active">
+                    <a href="index.jsp" class="fw-medium nav-link active">
                         Inicio
                     </a>
-                    <a href="#" class="nav-link fw-medium">
+                    <a href="reservas.jsp" class="nav-link fw-medium">
                         Reservas
                     </a>
-                    <a href="#" class="nav-link fw-medium">
+                    <a href="nosotros.html" class="nav-link fw-medium">
                         Nosotros
                     </a>            
                 </nav>
