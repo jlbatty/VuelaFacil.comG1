@@ -15,24 +15,18 @@ public class Avion {
   String modelo;
   int capacidadTotal;
   int capacidadEjecutiva;
-  int capacidadEconómica;
-  int totalDisponible;
-  int ejecutivaDisponble;
-  int economicaDisponible;
+  int capacidadEconomica;
 
   public Avion() {
   }
 
-  public Avion(String matrícula, String marca, String modelo, int capacidadTotal, int capacidadEjecutiva, int capacidadEconómica, int totalDisponible, int ejecutivaDisponble, int economicaDisponible) {
+  public Avion(String matrícula, String marca, String modelo, int capacidadTotal, int capacidadEjecutiva, int capacidadEconomica) {
     this.matrícula = matrícula;
     this.marca = marca;
     this.modelo = modelo;
     this.capacidadTotal = capacidadTotal;
     this.capacidadEjecutiva = capacidadEjecutiva;
-    this.capacidadEconómica = capacidadEconómica;
-    this.totalDisponible = totalDisponible;
-    this.ejecutivaDisponble = ejecutivaDisponble;
-    this.economicaDisponible = economicaDisponible;
+    this.capacidadEconomica = capacidadEconomica;
   }
 
   public String getMatrícula() {
@@ -75,37 +69,12 @@ public class Avion {
     this.capacidadEjecutiva = capacidadEjecutiva;
   }
 
-  public int getCapacidadEconómica() {
-    return capacidadEconómica;
+  public int getCapacidadEconomica() {
+    return capacidadEconomica;
   }
 
-  public void setCapacidadEconómica(int capacidadEconómica) {
-    this.capacidadEconómica = capacidadEconómica;
+  public void setCapacidadEconomica(int capacidadEconomica) {
+    this.capacidadEconomica = capacidadEconomica;
   }
-
-  public int getTotalDisponible() {
-    return totalDisponible;
-  }
-
-  public void setTotalDisponible(int totalDisponible) {
-    this.totalDisponible = totalDisponible;
-  }
-
-  public int getEjecutivaDisponble() {
-    return ejecutivaDisponble;
-  }
-
-  public void setEjecutivaDisponble(int ejecutivaDisponble) {
-    this.ejecutivaDisponble = ejecutivaDisponble;
-  }
-
-  public int getEconomicaDisponible() {
-    return economicaDisponible;
-  }
-
-  public void setEconomicaDisponible(int economicaDisponible) {
-    this.economicaDisponible = economicaDisponible;
-  }
-  
   
 }

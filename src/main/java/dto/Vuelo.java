@@ -12,22 +12,25 @@ import java.sql.Date;
  * @author @yotis56
  */
 public class Vuelo {
-  int idVuelo;
-  Date fechaVuelo;
-  //debería usar un Timestamp?
-  int codigoReservaAsoc;
-  String matriculaAvion;
-  int codigoRutaAsoc;
+  private int idVuelo;
+  private Date fechaVuelo;
+  private Avion avionAsociado;
+  //String matriculaAvion;
+  private Ruta rutaAsociada;
+  //int codigoRutaAsoc;
+  private int ejecutivaDisponible; 
+  private int economicaDisponible;
 
   public Vuelo() {
   }
 
-  public Vuelo(int idVuelo, Date fechaVuelo, int codigoReservaAsoc, String matriculaAvion, int codigoRutaAsoc) {
+  public Vuelo(int idVuelo, Date fechaVuelo, Avion avionAsociado, Ruta rutaAsociada, int ejecutivaDisponible, int economicaDisponible) {
     this.idVuelo = idVuelo;
     this.fechaVuelo = fechaVuelo;
-    this.codigoReservaAsoc = codigoReservaAsoc;
-    this.matriculaAvion = matriculaAvion;
-    this.codigoRutaAsoc = codigoRutaAsoc;
+    this.avionAsociado = avionAsociado;
+    this.rutaAsociada = rutaAsociada;
+    this.ejecutivaDisponible = ejecutivaDisponible;
+    this.economicaDisponible = economicaDisponible;
   }
 
   public int getIdVuelo() {
@@ -46,28 +49,38 @@ public class Vuelo {
     this.fechaVuelo = fechaVuelo;
   }
 
-  public int getCodigoReservaAsoc() {
-    return codigoReservaAsoc;
+  public Avion getAvionAsociado() {
+    return avionAsociado;
   }
 
-  public void setCodigoReservaAsoc(int codigoReservaAsoc) {
-    this.codigoReservaAsoc = codigoReservaAsoc;
+  public void setAvionAsociado(Avion avionAsociado) {
+    this.avionAsociado = avionAsociado;
   }
 
-  public String getMatriculaAvion() {
-    return matriculaAvion;
+  public Ruta getRutaAsociada() {
+    return rutaAsociada;
   }
 
-  public void setMatriculaAvion(String matriculaAvion) {
-    this.matriculaAvion = matriculaAvion;
+  public void setRutaAsociada(Ruta rutaAsociada) {
+    this.rutaAsociada = rutaAsociada;
   }
 
-  public int getCodigoRutaAsoc() {
-    return codigoRutaAsoc;
+  public int getEjecutivaDisponible() {
+    return ejecutivaDisponible;
   }
 
-  public void setCodigoRutaAsoc(int codigoRutaAsoc) {
-    this.codigoRutaAsoc = codigoRutaAsoc;
+  public void setEjecutivaDisponible(int ejecutivaDisponible) {
+    this.ejecutivaDisponible = ejecutivaDisponible;
   }
+
+  public int getEconomicaDisponible() {
+    return economicaDisponible;
+  }
+
+  public void setEconomicaDisponible(int economicaDisponible) {
+    this.economicaDisponible = economicaDisponible;
+  }
+
+  
   
 }
