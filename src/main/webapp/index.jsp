@@ -24,19 +24,23 @@
         String username = request.getParameter("usuario");
         String password = request.getParameter("contrasena");
 
+        if(username.length() !=0 && password.length()!=0){
         
-        if (username.equals("admin")&&password.equals("admin"))
-        {
+            
+            if (username.equals("admin")&&password.equals("admin"))
+            {
+
+            response.sendRedirect("admin/index.jsp");
+            }
+
+            else
+            {
+
+            out.println("<script>alert('Usuario o contraseña incorrecta');</script>");
+            }
+        }
+        }
         
-        response.sendRedirect("admin/index.jsp");
-        }
-       
-        else
-        {
-        
-        out.println("<script>alert('Usuario o contraseña incorrecta');</script>");
-        }
-        }
         %>
         <div class="d-flex">
             <div class="vh-100 py-3 px-3 fs-6 text-light contenedor-buscador">          
