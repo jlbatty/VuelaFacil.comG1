@@ -22,7 +22,34 @@ public class IAvionImpl implements IAvion {
 
   @Override
   public ArrayList<Avion> listAviones() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      String sqlQuery = "SELECT * FROM `avion`";
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      ResultSet result =  statement.executeQuery();
+      ArrayList<Avion> avionesEncontrados = new ArrayList<Avion>();
+      do {        
+        Avion avionEncontrado = new Avion();
+        avionEncontrado.setMatrícula(result.getString("matricula"));
+        avionEncontrado.setMarca(result.getString("marca"));
+        avionEncontrado.setModelo(result.getString("modelo"));
+        avionEncontrado.setCapacidadTotal(result.getInt("capacidadTotal"));
+        avionEncontrado.setCapacidadEconomica(result.getInt("capacidadEconomica"));
+        avionEncontrado.setCapacidadEjecutiva(result.getInt("capacidadEjecutiva"));
+        avionesEncontrados.add(avionEncontrado);
+      } while (result.next());
+      return avionesEncontrados;
+    } catch (Exception e) { 
+      System.out.println(e);
+      return null;
+    } finally {
+            try {
+                 con.close();
+             } catch (SQLException e) {
+                 System.err.println(e);
+             }
+         }
   }
 
   @Override

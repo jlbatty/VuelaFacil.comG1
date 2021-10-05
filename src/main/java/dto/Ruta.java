@@ -81,6 +81,7 @@ public class Ruta {
   }
 
   public void setTiempoAprox(Time tiempoAprox) {
+    //este método podría retornar el tiempo como String, en formato 'HH:MM:SS'
     this.tiempoAprox = tiempoAprox;
   }
 
