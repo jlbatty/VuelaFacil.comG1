@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 30, 2021 at 07:19 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-10-2021 a las 01:23:37
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `vuelafacil`
+-- Base de datos: `vuelafacil`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `avion`
+-- Estructura de tabla para la tabla `avion`
 --
 
 CREATE TABLE `avion` (
@@ -37,7 +37,7 @@ CREATE TABLE `avion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `avion`
+-- Volcado de datos para la tabla `avion`
 --
 
 INSERT INTO `avion` (`matricula`, `marca`, `modelo`, `capacidadTotal`, `capacidadEjecutiva`, `capacidadEconomica`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `avion` (`matricula`, `marca`, `modelo`, `capacidadTotal`, `capacida
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cliente`
+-- Estructura de tabla para la tabla `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -63,7 +63,7 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `cliente`
+-- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`numerodocumento`, `tipoDocumento`, `nombres`, `apellidos`, `telefono`, `correoElectronico`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `cliente` (`numerodocumento`, `tipoDocumento`, `nombres`, `apellidos
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reserva`
+-- Estructura de tabla para la tabla `reserva`
 --
 
 CREATE TABLE `reserva` (
@@ -87,7 +87,7 @@ CREATE TABLE `reserva` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `reserva`
+-- Volcado de datos para la tabla `reserva`
 --
 
 INSERT INTO `reserva` (`codigoReserva`, `solo_Ida`, `cantidadPasajeros`, `adultos`, `infantes`, `documentoCliente`, `tarifa`, `codigoVueloAsoc`) VALUES
@@ -96,7 +96,7 @@ INSERT INTO `reserva` (`codigoReserva`, `solo_Ida`, `cantidadPasajeros`, `adulto
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rutas`
+-- Estructura de tabla para la tabla `rutas`
 --
 
 CREATE TABLE `rutas` (
@@ -110,7 +110,7 @@ CREATE TABLE `rutas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `rutas`
+-- Volcado de datos para la tabla `rutas`
 --
 
 INSERT INTO `rutas` (`codigoRuta`, `salida`, `IATAsalida`, `destino`, `IATAdestino`, `tiempoAprox`, `distancia`) VALUES
@@ -123,12 +123,18 @@ INSERT INTO `rutas` (`codigoRuta`, `salida`, `IATAsalida`, `destino`, `IATAdesti
 (7, 'Bogotá, Colombia - El Dorado', 'BOG', 'Cali, Colombia - Alfonso Bonilla Aragón', 'CLO', '00:51:00', 306.86),
 (8, 'Cali, Colombia - Alfonso Bonilla Aragón', 'CLO', 'Bogotá, Colombia - El Dorado', 'BOG', '00:51:00', 306.86),
 (9, 'Bogotá, Colombia - El Dorado', 'BOG', 'Medellín, Colombia - José María Córdova', 'MDE', '00:45:00', 238.57),
-(10, 'Medellín, Colombia - José María Córdova', 'MDE', 'Bogotá, Colombia - El Dorado', 'BOG', '00:45:00', 238.57);
+(10, 'Medellín, Colombia - José María Córdova', 'MDE', 'Bogotá, Colombia - El Dorado', 'BOG', '00:45:00', 238.57),
+(11, 'Bucaramanga, Colombia - Palonegro', 'BGA', 'Medellín, Colombia - José María Córdova', 'MDE', '00:20:00', 270),
+(12, 'Bucaramanga, Colombia - Palonegro', 'BGA', 'Cali, Colombia - Alfonso Bonilla Aragón', 'CLO', '00:39:00', 533),
+(13, 'Cali, Colombia - Alfonso Bonilla Aragón', 'CLO', 'Bucaramanga, Colombia - Palonegro', 'BGA', '00:39:00', 533),
+(14, 'Cali, Colombia - Alfonso Bonilla Aragón', 'CLO', 'Medellín, Colombia - José María Córdova', 'MDE', '00:23:00', 311),
+(15, 'Medellín, Colombia - José María Córdova', 'MDE', 'Bucaramanga, Colombia - Palonegro', 'BGA', '00:20:00', 270),
+(16, 'Medellín, Colombia - José María Córdova', 'MDE', 'Cali, Colombia - Alfonso Bonilla Aragón', 'CLO', '00:23:00', 311);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tarifas`
+-- Estructura de tabla para la tabla `tarifas`
 --
 
 CREATE TABLE `tarifas` (
@@ -138,7 +144,7 @@ CREATE TABLE `tarifas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tarifas`
+-- Volcado de datos para la tabla `tarifas`
 --
 
 INSERT INTO `tarifas` (`codigoTarifa`, `nombreTarifa`, `precioTarifa`) VALUES
@@ -148,7 +154,7 @@ INSERT INTO `tarifas` (`codigoTarifa`, `nombreTarifa`, `precioTarifa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vuelo`
+-- Estructura de tabla para la tabla `vuelo`
 --
 
 CREATE TABLE `vuelo` (
@@ -161,7 +167,7 @@ CREATE TABLE `vuelo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `vuelo`
+-- Volcado de datos para la tabla `vuelo`
 --
 
 INSERT INTO `vuelo` (`idVuelo`, `fechaVuelo`, `matriculaAvion`, `codigoRutaAsoc`, `ejecutivaDisponible`, `economicaDisponible`) VALUES
@@ -178,23 +184,23 @@ INSERT INTO `vuelo` (`idVuelo`, `fechaVuelo`, `matriculaAvion`, `codigoRutaAsoc`
 (12, '2021-10-03 08:17:53', 'HK-5005', 9, 12, 182);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `avion`
+-- Indices de la tabla `avion`
 --
 ALTER TABLE `avion`
   ADD PRIMARY KEY (`matricula`);
 
 --
--- Indexes for table `cliente`
+-- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`numerodocumento`);
 
 --
--- Indexes for table `reserva`
+-- Indices de la tabla `reserva`
 --
 ALTER TABLE `reserva`
   ADD PRIMARY KEY (`codigoReserva`),
@@ -204,19 +210,19 @@ ALTER TABLE `reserva`
   ADD KEY `idVuelo` (`codigoVueloAsoc`);
 
 --
--- Indexes for table `rutas`
+-- Indices de la tabla `rutas`
 --
 ALTER TABLE `rutas`
   ADD PRIMARY KEY (`codigoRuta`);
 
 --
--- Indexes for table `tarifas`
+-- Indices de la tabla `tarifas`
 --
 ALTER TABLE `tarifas`
   ADD PRIMARY KEY (`codigoTarifa`);
 
 --
--- Indexes for table `vuelo`
+-- Indices de la tabla `vuelo`
 --
 ALTER TABLE `vuelo`
   ADD PRIMARY KEY (`idVuelo`),
@@ -224,47 +230,47 @@ ALTER TABLE `vuelo`
   ADD KEY `codigoRutaAsoc` (`codigoRutaAsoc`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `reserva`
+-- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
   MODIFY `codigoReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `rutas`
+-- AUTO_INCREMENT de la tabla `rutas`
 --
 ALTER TABLE `rutas`
-  MODIFY `codigoRuta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `codigoRuta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `tarifas`
+-- AUTO_INCREMENT de la tabla `tarifas`
 --
 ALTER TABLE `tarifas`
   MODIFY `codigoTarifa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `vuelo`
+-- AUTO_INCREMENT de la tabla `vuelo`
 --
 ALTER TABLE `vuelo`
   MODIFY `idVuelo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `reserva`
+-- Filtros para la tabla `reserva`
 --
 ALTER TABLE `reserva`
   ADD CONSTRAINT `idVuelo` FOREIGN KEY (`codigoVueloAsoc`) REFERENCES `vuelo` (`idVuelo`),
   ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`tarifa`) REFERENCES `tarifas` (`codigoTarifa`),
-  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`documentoCliente`) REFERENCES `cliente` (`numeroDocumento`) ON DELETE NO ACTION;
+  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`documentoCliente`) REFERENCES `cliente` (`numerodocumento`) ON DELETE NO ACTION;
 
 --
--- Constraints for table `vuelo`
+-- Filtros para la tabla `vuelo`
 --
 ALTER TABLE `vuelo`
   ADD CONSTRAINT `vuelo_ibfk_2` FOREIGN KEY (`matriculaAvion`) REFERENCES `avion` (`matricula`) ON DELETE NO ACTION,
