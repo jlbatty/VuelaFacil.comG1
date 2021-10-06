@@ -42,6 +42,18 @@
         }
         
         %>
+        <script type="text/javascript" src="lib.js"></script>
+        <script>
+            function stateListener() {
+
+                var ida = document.getElementById("idaVuelta");
+                var fecharegreso = document.getElementById("fechaRegreso");
+                fecharegreso.disabled = ida.checked ? false : true;
+                fecharegreso.value = "";
+
+
+            }
+        </script>
         <div class="d-flex">
             <div class="vh-100 py-3 px-3 fs-6 text-light contenedor-buscador">          
                 <div class="d-flex">
@@ -52,12 +64,12 @@
                         <p>Volar nunca había sido tan fácil</p>
                     </div>
                 </div>
-                <form action="vuelos" method="POST">
+                <form action="vuelos.jsp" method="POST">
                     <div class="d-flex justify-content-center mt-5 mb-4">
                         <div class="d-inline-flex w-70 radio">
-                            <input class="radio-input" type="radio" value="true" name="ida" id="ida"> 
+                            <input class="radio-input" type="radio" value="true" name="ida" id="ida" onclick="stateListener()"> 
                             <label for="ida" class="radio-label">Ida</label>
-                            <input class="radio-input" type="radio" value="false" name="ida" id="idaVuelta">  
+                            <input class="radio-input" type="radio" value="false" name="ida" id="idaVuelta" checked onclick="stateListener()">  
                             <label for="idaVuelta" class="radio-label">Ida y vuelta</label>
                         </div>              
                     </div>
@@ -100,15 +112,15 @@
                     <div class="mb-2">
                         <label>Cantidad de pasajeros</label>
                     </div>
-    
+
                     <div class="d-flex mb-5">            
                         <div class="w-40">
                             <label for="adultos" class="d-block">Adultos: </label>
-                            <input id="adultos" name="adultos" type="number" class="w-90 form-control">
+                            <input id="adultos" name="adultos" type="number" class="w-90 form-control" min="0" placeholder="0">
                         </div>
                         <div class="w-40">
                             <label for="infantes" class="d-block">Niños: </label>
-                            <input id="infantes" name="infantes" type="number" class="w-90 form-control">
+                            <input id="infantes" name="infantes" type="number" class="w-90 form-control" min="0" placeholder="0">
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">            
