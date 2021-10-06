@@ -81,6 +81,11 @@ public class Vuelo {
     this.economicaDisponible = economicaDisponible;
   }
 
+  @Override
+  public String toString() {
+    return "Vuelo{" + "idVuelo=" + idVuelo + ", fechaVuelo=" + fechaVuelo + ", avionAsociado=" + avionAsociado + ", rutaAsociada=" + rutaAsociada + ", ejecutivaDisponible=" + ejecutivaDisponible + ", economicaDisponible=" + economicaDisponible + '}';
+  }
+
   
   
 }

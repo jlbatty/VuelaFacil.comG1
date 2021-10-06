@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public interface IRuta {
   public ArrayList<Ruta> listRutas();
   public Ruta findRuta(int codigoRuta);
+  public boolean checkRuta (int codigoRuta);
   public boolean addRuta (Ruta ruta);
   public boolean editRuta (int codigoRuta, Ruta ruta);
   public boolean deleteRuta (int codigoRuta);

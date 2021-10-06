@@ -61,6 +61,7 @@ public class IAvionImpl implements IAvion {
       PreparedStatement statement = con.prepareStatement(sqlQuery);
       ResultSet result =  statement.executeQuery();
       Avion avionEncontrado = new Avion();
+      result.next();
       do {        
         avionEncontrado.setMatrícula(result.getString("matricula"));
         avionEncontrado.setMarca(result.getString("marca"));
@@ -95,6 +96,26 @@ public class IAvionImpl implements IAvion {
   @Override
   public boolean deleteAvion(String matricula) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public boolean checkAvion(String matricula) {
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      String sqlQuery = "SELECT * FROM `avion` WHERE `matricula` = '"+matricula+"'";
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      return statement.execute() == true;
+    } catch (Exception e) {
+      System.out.println(e);
+      return false;
+    } finally {
+      try {
+           con.close();
+       } catch (SQLException e) {
+           System.err.println(e);
+       }
+    }
   }
   
 }

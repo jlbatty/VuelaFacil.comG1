@@ -5,7 +5,6 @@
  */
 package dto;
 
-import java.sql.Date;
 import java.sql.Time;
 
 /**
@@ -91,6 +90,11 @@ public class Ruta {
 
   public void setDistancia(float distancia) {
     this.distancia = distancia;
+  }
+
+  @Override
+  public String toString() {
+    return "Ruta{" + "codigoRuta=" + codigoRuta + ", Salida=" + Salida + ", IATASalida=" + IATASalida + ", destino=" + destino + ", IATADestino=" + IATADestino + ", tiempoAprox=" + tiempoAprox + ", distancia=" + distancia + '}';
   }
   
 }

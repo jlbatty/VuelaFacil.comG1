@@ -34,10 +34,12 @@ public class IVueloImpl implements IVuelo {
         //Para la salida y la partida, recibe el código IATA
         String sqlQuery = "SELECT * FROM `vuelo` WHERE cast(fechaVuelo as date) = cast('"+fecha+"' as date) " +
                           "AND codigoRutaAsoc = (SELECT codigoRuta from rutas where IATAsalida = '"+partida+"' and IATAdestino = '"+destino+"');";
+        System.out.println(sqlQuery);
         PreparedStatement statement = con.prepareStatement(sqlQuery);
         ResultSet result = statement.executeQuery();    
         ArrayList<Vuelo> vuelosEncontrados = new ArrayList<Vuelo>();
-          do {
+        
+        while(result.next()){
               Vuelo vueloEncontrado = new Vuelo();
               vueloEncontrado.setIdVuelo(result.getInt("idVuelo"));
               vueloEncontrado.setFechaVuelo(result.getDate("fechaVuelo"));
@@ -46,7 +48,7 @@ public class IVueloImpl implements IVuelo {
               vueloEncontrado.setEjecutivaDisponible(result.getInt("ejecutivaDisponible"));
               vueloEncontrado.setEconomicaDisponible(result.getInt("economicaDisponible"));
               vuelosEncontrados.add(vueloEncontrado);
-          } while (result.next());
+          } 
             return vuelosEncontrados;
         } catch (Exception e) {
             System.out.println(e);
@@ -59,6 +61,8 @@ public class IVueloImpl implements IVuelo {
              }
          }
   }
+  
+  
 
   @Override
   public Vuelo buscarVueloPorId(int idVuelo) {
@@ -70,33 +74,63 @@ public class IVueloImpl implements IVuelo {
     Connection con = Conexion.getConexion();
     try {
       String sqlQuery = "SELECT * FROM `vuelos` WHERE `idVuelo` = " + idVuelo;
-       PreparedStatement statement = con.prepareStatement(sqlQuery);
-       ResultSet result = statement.executeQuery();   
-       Vuelo vueloEncontrado = new Vuelo();
-       do {        
-        vueloEncontrado.setIdVuelo(result.getInt("idVuelo"));
-        vueloEncontrado.setFechaVuelo(result.getDate("fechaVuelo"));
-        vueloEncontrado.setAvionAsociado(iAvionImpl.findAvion(result.getString("matriculaAvion")));
-        vueloEncontrado.setRutaAsociada(iRutaImpl.findRuta(result.getInt("codigoRutaAsoc")));
-        vueloEncontrado.setEjecutivaDisponible(result.getInt("ejecutivaDisponible"));
-        vueloEncontrado.setEconomicaDisponible(result.getInt("economicaDisponible"));
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      ResultSet result = statement.executeQuery();   
+      Vuelo vueloEncontrado = new Vuelo();
+      do {        
+       vueloEncontrado.setIdVuelo(result.getInt("idVuelo"));
+       vueloEncontrado.setFechaVuelo(result.getDate("fechaVuelo"));
+       vueloEncontrado.setAvionAsociado(iAvionImpl.findAvion(result.getString("matriculaAvion")));
+       vueloEncontrado.setRutaAsociada(iRutaImpl.findRuta(result.getInt("codigoRutaAsoc")));
+       vueloEncontrado.setEjecutivaDisponible(result.getInt("ejecutivaDisponible"));
+       vueloEncontrado.setEconomicaDisponible(result.getInt("economicaDisponible"));
       } while (result.next());
        return vueloEncontrado;
     } catch (Exception e) {
-            System.out.println(e);
-            return null;
-        } finally {
-            try {
-                 con.close();
-             } catch (SQLException e) {
-                 System.err.println(e);
-             }
-        }
+      System.out.println(e);
+      return null;
+    } finally {
+        try {
+             con.close();
+         } catch (SQLException e) {
+             System.err.println(e);
+         }
+    }
   }
 
   @Override
-  public boolean añadirVuelo(Vuelo vuelo) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public boolean añadirVuelo(Vuelo vuelo, String matricula, int codigoRuta) {
+    IAvionImpl iAvionImpl = new IAvionImpl();
+    IRutaImpl iRutaImpl = new IRutaImpl();
+    
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      if (iAvionImpl.checkAvion(matricula) && iRutaImpl.checkRuta(codigoRuta)){
+        String sqlQuery = "INSERT INTO `vuelo` (`idVuelo`, `fechaVuelo`, `matriculaAvion`, `codigoRutaAsoc`, `ejecutivaDisponible`, `economicaDisponible`) VALUES (?,?,?,?,?,?)";
+        PreparedStatement statement = con.prepareStatement(sqlQuery);
+        statement.setInt(1, vuelo.getIdVuelo());
+        statement.setDate(2, vuelo.getFechaVuelo());
+        statement.setString(3, matricula);
+        statement.setInt(4, codigoRuta);
+        statement.setInt(5, vuelo.getEjecutivaDisponible());
+        statement.setInt(6, vuelo.getEconomicaDisponible());
+        statement.execute();
+        return true;
+      } else {
+        return false;
+      }
+    } catch (Exception e) {
+      System.out.println(e);
+      return false;
+    } finally {
+      try {
+        con.close();
+       } catch (SQLException e) {
+        System.err.println(e);
+       }
+    }
+    
   }
 
   @Override

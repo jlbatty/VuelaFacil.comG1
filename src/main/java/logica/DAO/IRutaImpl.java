@@ -62,6 +62,7 @@ public class IRutaImpl implements IRuta {
       PreparedStatement statement = con.prepareStatement(sqlQuery);
       ResultSet result =  statement.executeQuery();
       Ruta rutaEncontrada = new Ruta();
+      result.next();
       do {        
         rutaEncontrada.setCodigoRuta(codigoRuta); 
         rutaEncontrada.setSalida(result.getString("salida"));
@@ -162,4 +163,25 @@ public class IRutaImpl implements IRuta {
        }
     }
     }
+
+  @Override
+  public boolean checkRuta(int codigoRuta) {
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      String sqlQuery = "SELECT * FROM `rutas` WHERE `codigoRuta` = "+codigoRuta;
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      return statement.execute();
+    } catch (Exception e) {
+      System.out.println(e);
+      return false;
+    } finally {
+      try {
+           con.close();
+       } catch (SQLException e) {
+           System.err.println(e);
+       }
+    }
   }
+  
+}

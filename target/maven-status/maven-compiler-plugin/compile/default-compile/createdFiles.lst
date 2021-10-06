@@ -6,6 +6,7 @@ logica\DAO\Interfaces\IVuelo.class
 logica\DAO\IClienteImpl.class
 dto\Avion.class
 Controladores\ControlCliente.class
+Controladores\ControlVuelo.class
 dto\Reserva.class
 logica\DAO\IRutaImpl.class
 ConexiónDb\ConexionTest.class

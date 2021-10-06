@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public interface IAvion {
   public ArrayList<Avion> listAviones();
   public Avion findAvion (String matricula);
+  public boolean checkAvion (String matricula);
   public boolean addAvion (Avion Avion);
   public boolean editAvion (String matricula, Avion avion);
   public boolean deleteAvion (String matricula);

@@ -52,62 +52,75 @@
                         <p>Volar nunca había sido tan fácil</p>
                     </div>
                 </div>
+                <form action="vuelos" method="POST">
+                    <div class="d-flex justify-content-center mt-5 mb-4">
+                        <div class="d-inline-flex w-70 radio">
+                            <input class="radio-input" type="radio" value="true" name="ida" id="ida"> 
+                            <label for="ida" class="radio-label">Ida</label>
+                            <input class="radio-input" type="radio" value="false" name="ida" id="idaVuelta">  
+                            <label for="idaVuelta" class="radio-label">Ida y vuelta</label>
+                        </div>              
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="w-50">
+                            <label class="d-block" for="origen">Origen</label>
+                            <select class="w-90 form-select" id="origen" name="origen">
+                                <option disabled selected >seleccione origen</option>
+                                <option value="BOG" >Bogotá</option>
+                                <option value="BGA" >Bucaramanga</option>
+                                <option value="BAQ" >Barranquilla</option>
+                                <option value="CTG" >Cartagena</option>
+                                <option value="CLO" >Cali</option>
+                                <option value="MDE" >Medellín</option>
+                            </select>
+                        </div>
+                        <div class="w-50">
+                            <label class="d-block" for="destino">Destino</label>
+                            <select class="w-90 form-select" id="destino" name="destino">
+                                <option disabled selected >seleccione origen</option>
+                                <option value="BOG" >Bogotá</option>
+                                <option value="BGA" >Bucaramanga</option>
+                                <option value="BAQ" >Barranquilla</option>
+                                <option value="CTG" >Cartagena</option>
+                                <option value="CLO" >Cali</option>
+                                <option value="MDE" >Medellín</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="w-50">
+                            <label class="d-block " for="fechaSalida">Fecha de salida</label>
+                            <input type="date" id="fechaSalida" name="fechaSalida" class="w-90 form-control">
+                        </div>
+                        <div class="w-50">
+                            <label class="d-block" for="fechaRegreso">Fecha de regreso</label>
+                            <input type="date" id="fechaRegreso" name="fechaRegreso" class="w-90 form-control">
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label>Cantidad de pasajeros</label>
+                    </div>
+    
+                    <div class="d-flex mb-5">            
+                        <div class="w-40">
+                            <label for="adultos" class="d-block">Adultos: </label>
+                            <input id="adultos" name="adultos" type="number" class="w-90 form-control">
+                        </div>
+                        <div class="w-40">
+                            <label for="infantes" class="d-block">Niños: </label>
+                            <input id="infantes" name="infantes" type="number" class="w-90 form-control">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">            
+                        <div class="w-40">
+                            <input type="submit" name="accion" class="w-100 btn btn-primary boton" value="Buscar" ></input>
+                        </div>
+                    </div>
+                </form>
 
-                <div class="d-flex justify-content-center mt-5 mb-4">
-                    <div class="d-inline-flex w-70 radio">
-                        <input class="radio-input" type="radio" value="true" name="ida" id="ida"> 
-                        <label for="ida" class="radio-label">Ida</label>
-                        <input class="radio-input" type="radio" value="false" name="ida" id="idaVuelta">  
-                        <label for="idaVuelta" class="radio-label">Ida y vuelta</label>
-                    </div>              
-                </div>
 
-                <div class="d-flex mb-4">
-                    <div class="w-50">
-                        <label class="d-block" for="origen">Origen</label>
-                        <select class="w-90 form-select" id="origen">
-                            <option value="">seleccione origen</option>
-                        </select>
-                    </div>
-                    <div class="w-50">
-                        <label class="d-block" for="destino">Destino</label>
-                        <select class="w-90 form-select" id="destino">
-                            <option>seleccione destino</option>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="d-flex mb-4">
-                    <div class="w-50">
-                        <label class="d-block " for="fechaSalida">Fecha de salida</label>
-                        <input type="date" id="fechaSalida" class="w-90 form-control">
-                    </div>
-                    <div class="w-50">
-                        <label class="d-block" for="fechaRegreso">Fecha de regreso</label>
-                        <input type="date" id="fechaRegreso" class="w-90 form-control">
-                    </div>
-                </div>
 
-                <div class="mb-2">
-                    <label>Cantidad de pasajeros</label>
-                </div>
-
-                <div class="d-flex mb-5">            
-                    <div class="w-40">
-                        <label for="adultos" class="d-block">Adultos: </label>
-                        <input id="adultos" type="number" class="w-90 form-control">
-                    </div>
-                    <div class="w-40">
-                        <label for="infantes" class="d-block">Niños: </label>
-                        <input id="infantes" type="number" class="w-90 form-control">
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-center">            
-                    <div class="w-40">
-                        <a class="w-100 btn btn-primary boton" href="vuelos.jsp" role="button">Buscar</a>
-                    </div>
-                </div>
 
             </div>
             <div class="vh-100 py-3 px-3 contenedor-derecho">

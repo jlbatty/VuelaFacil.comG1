@@ -76,5 +76,10 @@ public class Avion {
   public void setCapacidadEconomica(int capacidadEconomica) {
     this.capacidadEconomica = capacidadEconomica;
   }
+
+  @Override
+  public String toString() {
+    return "Avion{" + "matr\u00edcula=" + matrícula + ", marca=" + marca + ", modelo=" + modelo + ", capacidadTotal=" + capacidadTotal + ", capacidadEjecutiva=" + capacidadEjecutiva + ", capacidadEconomica=" + capacidadEconomica + '}';
+  }
   
 }

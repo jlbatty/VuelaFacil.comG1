@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public interface IVuelo {
   public ArrayList<Vuelo> buscarVuelos(String fecha, String partida, String destino);
   public Vuelo buscarVueloPorId(int idVuelo);
-  public boolean añadirVuelo(Vuelo vuelo);
+  public boolean añadirVuelo(Vuelo vuelo, String matricula, int codigoRuta);
   public boolean modificarVuelo(int idVuelo, Vuelo vuelo);
   public boolean eliminarVuelo(int idVuelo);
 }
