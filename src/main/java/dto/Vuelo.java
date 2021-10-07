@@ -6,6 +6,9 @@
 package dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 /**
  *
@@ -14,23 +17,46 @@ import java.sql.Date;
 public class Vuelo {
   private int idVuelo;
   private Date fechaVuelo;
+  private Timestamp horaVuelo;
   private Avion avionAsociado;
   //String matriculaAvion;
   private Ruta rutaAsociada;
   //int codigoRutaAsoc;
   private int ejecutivaDisponible; 
   private int economicaDisponible;
-
+          
   public Vuelo() {
   }
 
-  public Vuelo(int idVuelo, Date fechaVuelo, Avion avionAsociado, Ruta rutaAsociada, int ejecutivaDisponible, int economicaDisponible) {
+  public Vuelo(int idVuelo, Date fechaVuelo, Timestamp horaVuelo, Avion avionAsociado, Ruta rutaAsociada, int ejecutivaDisponible, int economicaDisponible) {
     this.idVuelo = idVuelo;
     this.fechaVuelo = fechaVuelo;
+    this.horaVuelo = horaVuelo;
     this.avionAsociado = avionAsociado;
     this.rutaAsociada = rutaAsociada;
     this.ejecutivaDisponible = ejecutivaDisponible;
     this.economicaDisponible = economicaDisponible;
+  }
+
+  public String getHoraVuelo() {
+    ZoneId zone = ZoneId.of("America/Bogota");
+    LocalDateTime salida = this.horaVuelo.toInstant().atZone(zone).toLocalDateTime();
+    return salida.toLocalTime().toString();
+  }
+  
+  public String getHoraLlegada(){
+    //acá tengo que sumar las horas
+    ZoneId zone = ZoneId.of("America/Bogota");
+    //aca convertí la fecha de salida, a un localDateTime
+    LocalDateTime salida = this.horaVuelo.toInstant().atZone(zone).toLocalDateTime();
+    salida = salida.plusHours(this.rutaAsociada.getTiempoAprox().getHour());
+    salida = salida.plusMinutes(this.rutaAsociada.getTiempoAprox().getMinute());
+    salida = salida.plusSeconds(this.rutaAsociada.getTiempoAprox().getSecond());
+    return salida.toLocalTime().toString();
+  } 
+
+  public void setHoraVuelo(Timestamp horaVuelo) {
+    this.horaVuelo = horaVuelo;
   }
 
   public int getIdVuelo() {

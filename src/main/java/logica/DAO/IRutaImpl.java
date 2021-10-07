@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import logica.DAO.Interfaces.IRuta;
 
@@ -36,7 +39,7 @@ public class IRutaImpl implements IRuta {
         rutaEncontrada.setIATASalida(result.getString("IATAsalida"));
         rutaEncontrada.setDestino(result.getString("destino"));
         rutaEncontrada.setIATADestino(result.getString("IATAdestino"));
-        rutaEncontrada.setTiempoAprox(result.getTime("tiempoAprox"));
+        rutaEncontrada.setTiempoAprox(result.getObject("tiempoAprox", LocalTime.class));
         rutaEncontrada.setDistancia(result.getFloat("distancia"));
         rutasEncontradas.add(rutaEncontrada);
       } while (result.next());
@@ -69,7 +72,7 @@ public class IRutaImpl implements IRuta {
         rutaEncontrada.setIATASalida(result.getString("IATAsalida"));
         rutaEncontrada.setDestino(result.getString("destino"));
         rutaEncontrada.setIATADestino(result.getString("IATAdestino"));
-        rutaEncontrada.setTiempoAprox(result.getTime("tiempoAprox"));
+        rutaEncontrada.setTiempoAprox(result.getObject("tiempoAprox", LocalTime.class));
         rutaEncontrada.setDistancia(result.getFloat("distancia"));
       } while (result.next());
       return rutaEncontrada;
@@ -98,7 +101,8 @@ public class IRutaImpl implements IRuta {
       statement.setString(3, ruta.getIATASalida());
       statement.setString(4, ruta.getDestino());
       statement.setString(5, ruta.getIATASalida());
-      statement.setTime(6, ruta.getTiempoAprox());
+      Time LocalTimeToTime = new Time(ruta.getTiempoAprox().getHour(),ruta.getTiempoAprox().getMinute(),ruta.getTiempoAprox().getSecond());
+      statement.setTime(6, LocalTimeToTime);
       statement.setFloat(7, ruta.getDistancia());
       statement.execute();
       return true;

@@ -43,6 +43,7 @@ public class IVueloImpl implements IVuelo {
               Vuelo vueloEncontrado = new Vuelo();
               vueloEncontrado.setIdVuelo(result.getInt("idVuelo"));
               vueloEncontrado.setFechaVuelo(result.getDate("fechaVuelo"));
+              vueloEncontrado.setHoraVuelo(result.getTimestamp("fechaVuelo"));
               vueloEncontrado.setAvionAsociado(iAvionImpl.findAvion(result.getString("matriculaAvion")));
               vueloEncontrado.setRutaAsociada(iRutaImpl.findRuta(result.getInt("codigoRutaAsoc")));
               vueloEncontrado.setEjecutivaDisponible(result.getInt("ejecutivaDisponible"));

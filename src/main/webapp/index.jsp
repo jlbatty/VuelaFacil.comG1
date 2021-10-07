@@ -64,7 +64,7 @@
                         <p>Volar nunca había sido tan fácil</p>
                     </div>
                 </div>
-                <form action="vuelos.jsp" method="POST">
+                <form action="vuelos" method="POST">
                     <div class="d-flex justify-content-center mt-5 mb-4">
                         <div class="d-inline-flex w-70 radio">
                             <input class="radio-input" type="radio" value="true" name="ida" id="ida" onclick="stateListener()"> 

@@ -6,6 +6,8 @@
 package dto;
 
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalTime;
 
 /**
  *
@@ -18,14 +20,14 @@ public class Ruta {
   String destino;
   String IATADestino;
   //Probablemente sea redundante poner a salida/destino como IATA, y como string en el nombre
-  Time tiempoAprox;
+  LocalTime tiempoAprox;
   //¿Deberíamos usar Timestamp de sql?
   float distancia;
 
   public Ruta() {
   }
 
-  public Ruta(int codigoRuta, String Salida, String IATASalida, String destino, String IATADestino, Time tiempoAprox, float distancia) {
+  public Ruta(int codigoRuta, String Salida, String IATASalida, String destino, String IATADestino, LocalTime tiempoAprox, float distancia) {
     this.codigoRuta = codigoRuta;
     this.Salida = Salida;
     this.IATASalida = IATASalida;
@@ -75,11 +77,11 @@ public class Ruta {
     this.IATADestino = IATADestino;
   }
 
-  public Time getTiempoAprox() {
+  public LocalTime getTiempoAprox() {
     return tiempoAprox;
   }
 
-  public void setTiempoAprox(Time tiempoAprox) {
+  public void setTiempoAprox(LocalTime tiempoAprox) {
     //este método podría retornar el tiempo como String, en formato 'HH:MM:SS'
     this.tiempoAprox = tiempoAprox;
   }
