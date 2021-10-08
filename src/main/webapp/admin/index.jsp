@@ -53,7 +53,7 @@
         <h1 class="visually-hidden">Sidebars examples</h1>
         
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 250px; display:inline-block;  margin: 0;  padding: 0; background: linear-gradient(180deg, rgba(0,164,215,1) 0%, rgba(9,91,165,1) 100%);">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> 
+            <a href="../index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> 
                 <img src="../assets/img/logo-blanco.png" width="120"/>
                 <span class="fs-4">Admin</span>
             </a>
@@ -98,7 +98,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                     
-                    <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item" href="../index.jsp">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </div> 

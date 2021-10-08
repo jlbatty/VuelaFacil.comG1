@@ -42,6 +42,7 @@
         }
         
         %>
+        <script type="text/javascript" ></script>
         <script>
             function stateListener() {
 
@@ -105,7 +106,7 @@
                         </div>
                         <div class="w-50">
                             <label class="d-block" for="fechaRegreso">Fecha de regreso</label>
-                            <input type="date" id="fechaRegreso" name="fechaRegreso" class="w-90 form-control">
+                            <input type="date" id="fechaRegreso" name="fechaRegreso" value=" " class="w-90 form-control">
                         </div>
                     </div>
                     <div class="mb-2">
