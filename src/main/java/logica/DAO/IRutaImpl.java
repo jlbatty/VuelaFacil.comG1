@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import logica.DAO.Interfaces.IRuta;
@@ -32,6 +31,7 @@ public class IRutaImpl implements IRuta {
       PreparedStatement statement = con.prepareStatement(sqlQuery);
       ResultSet result =  statement.executeQuery();
       ArrayList<Ruta> rutasEncontradas = new ArrayList<Ruta>();
+      result.next();
       do {        
         Ruta rutaEncontrada = new Ruta();
         rutaEncontrada.setCodigoRuta(result.getInt("codigoRuta")); 

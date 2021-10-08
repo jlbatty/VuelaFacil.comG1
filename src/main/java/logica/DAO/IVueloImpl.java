@@ -78,6 +78,7 @@ public class IVueloImpl implements IVuelo {
       PreparedStatement statement = con.prepareStatement(sqlQuery);
       ResultSet result = statement.executeQuery();   
       Vuelo vueloEncontrado = new Vuelo();
+      result.next();
       do {        
        vueloEncontrado.setIdVuelo(result.getInt("idVuelo"));
        vueloEncontrado.setFechaVuelo(result.getDate("fechaVuelo"));
@@ -134,14 +135,126 @@ public class IVueloImpl implements IVuelo {
     
   }
 
+  
+  //hacer que al guardar una reserva, disminuyan los puestos del vuelo
   @Override
   public boolean modificarVuelo(int idVuelo, Vuelo vuelo) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      String sqlQuery = "UPDATE `vuelo` SET ? WHERE `vuelo`.`idVuelo` = ? ";
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      String set = "";
+      set += "`fechaVuelo` = '"+vuelo.getFechaVuelo()+"'";
+      set += "`matriculaAvion	` = '"+vuelo.getAvionAsociado().getMatrícula()+"'";
+      set += "`codigoRutaAsoc` = '"+vuelo.getRutaAsociada().getCodigoRuta()+"'";
+      set += "`ejecutivaDisponible` = '"+vuelo.getEjecutivaDisponible()+"'";
+      set += "`economicaDisponible` = '"+vuelo.getEconomicaDisponible()+"'";
+      statement.setString(1, set);
+      statement.setInt(2, idVuelo);
+      statement.executeUpdate();
+      return true;
+    } catch (Exception e) {
+      System.out.println(e);
+      return false;
+    } finally {
+      try {
+        con.close();
+       } catch (SQLException e) {
+        System.err.println(e);
+       }
+    }
   }
-
+  
+  public Integer getAsientosDisponibles (int idVuelo, int tipo){
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    String sqlQuery;
+    try {
+      switch (tipo) {
+        case 0:
+          sqlQuery = "SELECT `ejecutivaDisponible` FROM `vuelos` WHERE `idVuelo` = " + idVuelo;
+          break;
+        case 1:
+          sqlQuery = "SELECT `economicaDisponible` FROM `vuelos` WHERE `idVuelo` = " + idVuelo;
+          break;
+        default:
+          System.out.println("Por favor ingrese un tipo de aseiento válido");
+          return null;
+      }
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      ResultSet result = statement.executeQuery();
+      result.next();
+      if (tipo == 0){
+        return result.getInt("ejecutivaDisponible");
+      } else {
+        return result.getInt("economicaDisponible");
+      }
+      
+    } catch (Exception e) {
+      System.out.println(e);
+      return null;
+    } finally {
+      try {
+        con.close();
+       } catch (SQLException e) {
+        System.err.println(e);
+       }
+    }
+  }
+  
+  public boolean apartarAsiento (int idVuelo, int numeroPuestos, int tipo){
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      String sqlQuery = "UPDATE `vuelo` SET ? WHERE `vuelo`.`idVuelo` = ? ";
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      String set = "";
+      int asientosDisponiblesActualizado = this.getAsientosDisponibles(idVuelo, tipo) - numeroPuestos;
+      switch (tipo) {
+        case 0:
+          set += "`ejecutivaDisponible` = '"+asientosDisponiblesActualizado+"'";
+          break;
+        case 1:
+          set += "`economicaDisponible` = '"+asientosDisponiblesActualizado+"'";
+          break;
+        default:
+          System.out.println("Por favor ingrese un tipo de aseiento válido");
+          return false;
+      }
+      statement.setString(1, set);
+      statement.setInt(2, idVuelo);
+      statement.executeUpdate();
+      return true;
+    } catch (Exception e) {
+      System.out.println(e);
+      return false;
+    } finally {
+      try {
+        con.close();
+       } catch (SQLException e) {
+        System.err.println(e);
+       }
+    }
+  }
   @Override
   public boolean eliminarVuelo(int idVuelo) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      String sqlQuery = "DELETE FROM `vuelo` WHERE `idVuelo` = '"+idVuelo+"'";
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      statement.execute();
+      return true;
+    } catch (Exception e) {
+      System.out.println(e);
+      return false;
+    } finally {
+       try {
+            con.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }  }
   
 }

@@ -59,21 +59,21 @@
                             <div class="container align-self-center align-items-cente">
                                 <div class="row row-cols-4 align-self-center">
                                     <div class="col  text-center align-self-center h6">FECHA</div>
-                                    <div class="col  text-center align-self-center h6 "><%=vuelo.getRutaAsociada().getSalida()%></div>
+                                    <div class="col  text-center align-self-center h6 "><%=vuelo.getRutaAsociada().getCiudadSalida()%></div>
                                     <div class="col-2  text-center align-self-center h6">DIRECTO</div>
-                                    <div class="col  text-center align-self-center h6"><%=vuelo.getRutaAsociada().getDestino()%></div>
+                                    <div class="col  text-center align-self-center h6"><%=vuelo.getRutaAsociada().getCiudadDestino()%></div>
 
                                     <div class="col  text-center align-self-center h5"><%=vuelo.getFechaVuelo()%> </div>
                                     <div class="col  text-center align-self-center">
                                         <img src="assets/img/despe.png" alt="" height="25px"/>
-                                        <%=vuelo.getRutaAsociada().getSalida()%>
+                                        <%=vuelo.getRutaAsociada().getAeropuertoSalida()%>
                                     </div>                              
                                     <div class="col-2  text-center align-self-center">
                                         <img src="assets/img/rut.png" alt="" height="25px" />                               
                                     </div>
                                     <div class="col  text-center align-self-center">
                                         <img src="assets/img/ateri.png" alt=""height="25px"/>
-                                        Aeropuerto llegada 
+                                        <%=vuelo.getRutaAsociada().getAeropuertoDestino()%>
                                     </div>
 
                                     <div class="col  text-center align-self-center">(<%=vuelo.getRutaAsociada().getIATASalida()%> - <%=vuelo.getRutaAsociada().getIATADestino()%>)</div>
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <div class="col-auto  align-self-center">
-                            <div class="col  text-center align-self-center h3">HAY QUE PONER LA TARIFA: $85.000</div>
+                            <div class="col  text-center align-self-center h3">$85.000</div>
                             <button class="btn  btn-primary align-middle" type="button"> <img src="assets/img/iconocarrito.png" alt="" height="25px"/>  Reservar Ahora! </button> 
                             
                         </div>
@@ -96,8 +96,11 @@
             
             <%}%>
             
+            <% if((boolean)request.getAttribute("idaVuelta")){ %>
             <div class="text-center" style="padding-top: 15px; padding-bottom: 15px"> <h3>Seleccionar Vuelo de VUELTA</h3> </div>
             
+            
+            <%}%>
 
             <! –– vuelta 1 ––>
             <div class="container align-self-center align-items-center" >

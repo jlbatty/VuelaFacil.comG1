@@ -54,7 +54,7 @@ public class Vuelo {
     salida = salida.plusSeconds(this.rutaAsociada.getTiempoAprox().getSecond());
     return salida.toLocalTime().toString();
   } 
-
+  
   public void setHoraVuelo(Timestamp horaVuelo) {
     this.horaVuelo = horaVuelo;
   }

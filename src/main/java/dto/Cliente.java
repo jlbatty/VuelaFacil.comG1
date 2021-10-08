@@ -5,12 +5,6 @@
  */
 package dto;
 
-import ConexiónDb.ConexionDb;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 /**
  *
  * @author @yotis56
@@ -38,27 +32,7 @@ public class Cliente {
     this.telefono = telefono;
     this.correoElectronico = correoElectronico;
   }
-
-  public ResultSet getAllClients (){
-    ConexionDb con = new ConexionDb();
-    Connection conexion = con.getConexion();
-    String sqlQuery = "SELECT * FROM ALL";
-    try {
-      PreparedStatement statement = conexion.prepareStatement(sqlQuery);
-      ResultSet rawData = statement.executeQuery();
-      return rawData;
-    } catch (Exception e) {
-      System.out.println(e);
-      return null;
-    } finally {
-        try {
-            conexion.close();
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-    }
-  }
-  
+ 
   public String getNumerodocumento() {
     return numerodocumento;
   }

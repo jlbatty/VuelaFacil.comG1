@@ -15,20 +15,40 @@ public class Reserva {
   int cantidadPasajeros;
   int adultos;
   int infantes;
-  String documentoCliente;
+  Cliente cliente;
+  //String documentoCliente;
   int tarifa;
+  Vuelo vueloAsociado;
+  //int codigoVueloAsoc;
 
   public Reserva() {
   }
 
-  public Reserva(int codigoReserva, int solo_ida, int cantidadPasajeros, int adultos, int infantes, String documentoCliente, int tarifa) {
+  public Reserva(int codigoReserva, int solo_ida, int cantidadPasajeros, int adultos, int infantes, Cliente cliente, int tarifa, Vuelo vueloAsociado) {
     this.codigoReserva = codigoReserva;
     this.solo_ida = solo_ida;
     this.cantidadPasajeros = cantidadPasajeros;
     this.adultos = adultos;
     this.infantes = infantes;
-    this.documentoCliente = documentoCliente;
+    this.cliente = cliente;
     this.tarifa = tarifa;
+    this.vueloAsociado = vueloAsociado;
+  }
+
+  public Cliente getCliente() {
+    return cliente;
+  }
+
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
+  }
+
+  public Vuelo getVueloAsociado() {
+    return vueloAsociado;
+  }
+
+  public void setVueloAsociado(Vuelo vueloAsociado) {
+    this.vueloAsociado = vueloAsociado;
   }
 
   public int getCodigoReserva() {
@@ -69,14 +89,6 @@ public class Reserva {
 
   public void setInfantes(int infantes) {
     this.infantes = infantes;
-  }
-
-  public String getDocumentoCliente() {
-    return documentoCliente;
-  }
-
-  public void setDocumentoCliente(String documentoCliente) {
-    this.documentoCliente = documentoCliente;
   }
 
   public int getTarifa() {

@@ -29,6 +29,7 @@ public class IClienteImpl implements ICliente{
       PreparedStatement statement = con.prepareStatement(sqlQuery);
       ResultSet result = statement.executeQuery();
       Cliente clienteObtenido = new Cliente();
+      result.next();
       do {        
         clienteObtenido.setNumerodocumento(documento);
         clienteObtenido.setTipoDocumento(result.getString("tipoDocumento"));
@@ -59,7 +60,7 @@ public class IClienteImpl implements ICliente{
       PreparedStatement statement = con.prepareStatement(sqlQuery);
       ResultSet result = statement.executeQuery();
       ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
-      
+      result.next();
       do {        
         Cliente clienteObtenido = new Cliente();
         clienteObtenido.setNumerodocumento(result.getString("numerodocumento"));
@@ -115,7 +116,7 @@ public class IClienteImpl implements ICliente{
     ConexionDb Conexion = new ConexionDb();
     Connection con = Conexion.getConexion();
     try {
-      String sqlQuery = "UPDATE cliente SET ? WHERE `cliente`.`numerodocumento` = '1098456789'";
+      String sqlQuery = "UPDATE cliente SET ? WHERE `cliente`.`numerodocumento` = '"+documento+"'";
       PreparedStatement statement = con.prepareStatement(sqlQuery);
       String set = "";
       set += "`tipoDocumento` = '"+cliente.getTipoDocumento()+"'";

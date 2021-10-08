@@ -36,7 +36,26 @@ public class Ruta {
     this.tiempoAprox = tiempoAprox;
     this.distancia = distancia;
   }
-
+  
+  public String separarCiudadAeropuerto (int indice, String ciudad){
+    //el índice funciona así: 0 para obtener la ciudad, 1 para obtener el aeropuerto
+    String[] slicedString = ciudad.split("-");
+    return slicedString[indice];
+  }
+  
+  public String getCiudadSalida(){
+    return this.separarCiudadAeropuerto(0, Salida);
+  }
+  public String getAeropuertoSalida() {
+    return separarCiudadAeropuerto(1, Salida);
+  }
+  public String getCiudadDestino(){
+    return this.separarCiudadAeropuerto(0, destino);
+  }
+  public String getAeropuertoDestino() {
+    return separarCiudadAeropuerto(1, destino);
+  }
+  //public 
   public int getCodigoRuta() {
     return codigoRuta;
   }

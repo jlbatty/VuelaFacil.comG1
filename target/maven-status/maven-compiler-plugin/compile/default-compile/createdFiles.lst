@@ -1,5 +1,6 @@
 dto\Vuelo.class
 logica\DAO\IAvionImpl.class
+logica\DAO\IReservaImpl.class
 ConexiónDb\ConexionDb.class
 logica\DAO\Interfaces\IAvion.class
 logica\DAO\Interfaces\IVuelo.class
@@ -8,6 +9,7 @@ dto\Avion.class
 Controladores\ControlCliente.class
 Controladores\ControlVuelo.class
 dto\Reserva.class
+logica\DAO\Interfaces\IReserva.class
 logica\DAO\IRutaImpl.class
 ConexiónDb\ConexionTest.class
 logica\DAO\Interfaces\ICliente.class

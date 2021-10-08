@@ -29,6 +29,7 @@ public class IAvionImpl implements IAvion {
       PreparedStatement statement = con.prepareStatement(sqlQuery);
       ResultSet result =  statement.executeQuery();
       ArrayList<Avion> avionesEncontrados = new ArrayList<Avion>();
+      result.next();
       do {        
         Avion avionEncontrado = new Avion();
         avionEncontrado.setMatrícula(result.getString("matricula"));
@@ -85,17 +86,81 @@ public class IAvionImpl implements IAvion {
 
   @Override
   public boolean addAvion(Avion Avion) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      String sqlQuery = "INSERT INTO `avion` (`matricula`, `marca`, `modelo`, `capacidadTotal`, `capacidadEjecutiva`, `capacidadEconomica`) (?,?,?,?,?,?)";
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      statement.setString(1, Avion.getMatrícula());
+      statement.setString(2, Avion.getMarca());
+      statement.setString(3, Avion.getModelo());
+      statement.setInt(4, Avion.getCapacidadTotal());
+      statement.setInt(5, Avion.getCapacidadEjecutiva());
+      statement.setInt(6, Avion.getCapacidadEconomica());
+      statement.execute();
+      return true;
+    } catch (Exception e) { 
+      System.out.println(e);
+      return false;
+    } finally {
+            try {
+                 con.close();
+             } catch (SQLException e) {
+                 System.err.println(e);
+             }
+         }
   }
 
   @Override
   public boolean editAvion(String matricula, Avion avion) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();  
+    try {
+      String sqlQuery = "UPDATE `avion` SET ? WHERE `avion`.`matricula` = ? ";
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      String set = "";
+      set += "`matricula` = '"+avion.getMatrícula()+"'";
+      set += "`marca	` = '"+avion.getMarca()+"'";
+      set += "`modelo` = '"+avion.getModelo()+"'";
+      set += "`capacidadTotal` = '"+avion.getCapacidadTotal()+"'";
+      set += "`capacidadEjecutiva` = '"+avion.getCapacidadEjecutiva()+"'";
+      set += "`capacidadEconomica` = '"+avion.getCapacidadEconomica()+"'";
+      statement.setString(1, set);
+      statement.setString(2, matricula);
+      statement.executeUpdate();
+      return true;
+    } catch (Exception e) { 
+      System.out.println(e);
+      return false;
+    } finally {
+            try {
+                 con.close();
+             } catch (SQLException e) {
+                 System.err.println(e);
+             }
+         }
+  
   }
 
   @Override
   public boolean deleteAvion(String matricula) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    ConexionDb Conexion = new ConexionDb();
+    Connection con = Conexion.getConexion();
+    try {
+      String sqlQuery = "DELETE FROM `avion` WHERE `matricula` = '"+matricula+"'";
+      PreparedStatement statement = con.prepareStatement(sqlQuery);
+      statement.execute();
+      return true;
+    } catch (Exception e) { 
+      System.out.println(e);
+      return false;
+    } finally {
+            try {
+                 con.close();
+             } catch (SQLException e) {
+                 System.err.println(e);
+             }
+    }  
   }
 
   @Override
