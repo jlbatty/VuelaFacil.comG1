@@ -7,7 +7,6 @@ package Controladores;
 
 import dto.Vuelo;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -56,8 +55,7 @@ public class ControlVuelo extends HttpServlet {
 
   private void buscar (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
     //Acá guardo los parametros que me llegan como parametros del request, en variables
-    boolean ida = Boolean.parseBoolean(request.getParameter("ida"));
-    boolean idaVuelta = Boolean.parseBoolean(request.getParameter("vuelta"));
+    String ida = (request.getParameter("ida"));
     String origen = request.getParameter("origen");
     String destino = request.getParameter("destino");
     String fechaSalida = request.getParameter("fechaSalida");
@@ -70,7 +68,8 @@ public class ControlVuelo extends HttpServlet {
     ArrayList<Vuelo> listaVuelos = vueloDAO.buscarVuelos(fechaSalida, origen, destino);
     System.out.println(listaVuelos);
     request.setAttribute("listaVuelos", listaVuelos);
-    if (idaVuelta){
+    request.setAttribute("ida", ida);
+    if (ida == "false"){
       ArrayList<Vuelo> listaVuelosVuelta = vueloDAO.buscarVuelos(fechaRegreso, destino, origen);
       request.setAttribute("listaVuelosVuelta", listaVuelosVuelta);
     }

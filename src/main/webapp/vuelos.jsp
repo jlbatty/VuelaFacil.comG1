@@ -79,7 +79,7 @@
                                     <div class="col  text-center align-self-center">(<%=vuelo.getRutaAsociada().getIATASalida()%> - <%=vuelo.getRutaAsociada().getIATADestino()%>)</div>
                                     <div class="col  text-center align-self-center">Hora: <%=vuelo.getHoraVuelo()%></div>
                                     <div class="col-2  text-center align-self-center">(<%=vuelo.getRutaAsociada().getTiempoAprox().toString()%>)</div>
-                                    <div class="col  text-center align-self-center"><%=vuelo.getHoraLlegada()%>AM</div>
+                                    <div class="col  text-center align-self-center"><%=vuelo.getHoraLlegada()%></div>
 
                                 </div>
                             </div>
@@ -96,13 +96,19 @@
             
             <%}%>
             
-            <% if((boolean)request.getAttribute("idaVuelta")){ %>
+            <% 
+              String idaVuelta = request.getAttribute("ida").toString();
+              //if(idaVuelta == "false"){  
+              if(true){
+            %>
+              
             <div class="text-center" style="padding-top: 15px; padding-bottom: 15px"> <h3>Seleccionar Vuelo de VUELTA</h3> </div>
+            <div>${ida}</div>
+            <%
+                List<Vuelo> vuelosVuelta = (ArrayList<Vuelo>)request.getAttribute("listaVuelosVuelta");
+                for (Vuelo vuelo:vuelosVuelta) {
+            %>
             
-            
-            <%}%>
-
-            <! –– vuelta 1 ––>
             <div class="container align-self-center align-items-center" >
                 <div class="shadow p-3 mb-5 bg-body rounded ">
                     <div class="row justify-content-center">
@@ -113,128 +119,42 @@
                             <div class="container align-self-center align-items-cente">
                                 <div class="row row-cols-4 align-self-center">
                                     <div class="col  text-center align-self-center h6">FECHA</div>
-                                    <div class="col  text-center align-self-center h6 ">BOGOTA </div>
+                                    <div class="col  text-center align-self-center h6 "><%=vuelo.getRutaAsociada().getCiudadSalida()%></div>
                                     <div class="col-2  text-center align-self-center h6">DIRECTO</div>
-                                    <div class="col  text-center align-self-center h6">BUCARAMANGA</div>
+                                    <div class="col  text-center align-self-center h6"><%=vuelo.getRutaAsociada().getCiudadDestino()%></div>
 
-                                    <div class="col  text-center align-self-center h5">15 Julio </div>
+                                    <div class="col  text-center align-self-center h5"><%=vuelo.getFechaVuelo()%> </div>
                                     <div class="col  text-center align-self-center">
                                         <img src="assets/img/despe.png" alt="" height="25px"/>
-                                        Dorado
+                                        <%=vuelo.getRutaAsociada().getAeropuertoSalida()%>
                                     </div>                              
                                     <div class="col-2  text-center align-self-center">
                                         <img src="assets/img/rut.png" alt="" height="25px" />                               
                                     </div>
                                     <div class="col  text-center align-self-center">
                                         <img src="assets/img/ateri.png" alt=""height="25px"/>
-                                        Palonegro 
+                                        <%=vuelo.getRutaAsociada().getAeropuertoDestino()%>
                                     </div>
 
-                                    <div class="col  text-center align-self-center">(BOG - BGA)</div>
-                                    <div class="col  text-center align-self-center">8:00AM</div>
-                                    <div class="col-2  text-center align-self-center">(1h 30mn)</div>
-                                    <div class="col  text-center align-self-center">9:30AM</div>
+                                    <div class="col  text-center align-self-center">(<%=vuelo.getRutaAsociada().getIATASalida()%> - <%=vuelo.getRutaAsociada().getIATADestino()%>)</div>
+                                    <div class="col  text-center align-self-center">Hora: <%=vuelo.getHoraVuelo()%></div>
+                                    <div class="col-2  text-center align-self-center">(<%=vuelo.getRutaAsociada().getTiempoAprox().toString()%>)</div>
+                                    <div class="col  text-center align-self-center"><%=vuelo.getHoraLlegada()%></div>
 
                                 </div>
                             </div>
                         </div>
                         <div class="col-auto  align-self-center">
                             <div class="col  text-center align-self-center h3">$85.000</div>
-                            <button class="btn  btn-primary align-middle" type="button" > <img src="assets/img/iconocarrito.png" alt="" height="25px"/>  Reservar Ahora! </button> 
-                        </div>
-                    </div>
-                </div>     
-            </div>
-
-            <! –– vuelta 2 ––>
-            <div class="container align-self-center align-items-center" >
-                <div class="shadow p-3 mb-5 bg-body rounded ">
-                    <div class="row justify-content-center">
-                        <div class="col-auto  align-self-center ">
-                            <img src="assets/img/aero.jpg" class="rounded-circle" alt="..." height="60px" />
-                        </div>
-                        <div class="col-9  align-self-center">
-                            <div class="container align-self-center align-items-cente">
-                                <div class="row row-cols-4 align-self-center">
-                                    <div class="col  text-center align-self-center h6">FECHA</div>
-                                    <div class="col  text-center align-self-center h6 ">BOGOTA </div>
-                                    <div class="col-2  text-center align-self-center h6">DIRECTO</div>
-                                    <div class="col  text-center align-self-center h6">BUCARAMANGA</div>
-
-                                    <div class="col  text-center align-self-center h5">15 Julio </div>
-                                    <div class="col  text-center align-self-center">
-                                        <img src="assets/img/despe.png" alt="" height="25px"/>
-                                        Dorado
-                                    </div>                              
-                                    <div class="col-2  text-center align-self-center">
-                                        <img src="assets/img/rut.png" alt="" height="25px" />                               
-                                    </div>
-                                    <div class="col  text-center align-self-center">
-                                        <img src="assets/img/ateri.png" alt=""height="25px"/>
-                                        Palonegro 
-                                    </div>
-
-                                    <div class="col  text-center align-self-center">(BOG - BGA)</div>
-                                    <div class="col  text-center align-self-center">8:00AM</div>
-                                    <div class="col-2  text-center align-self-center">(1h 30mn)</div>
-                                    <div class="col  text-center align-self-center">9:30AM</div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto  align-self-center">
-                            <div class="col  text-center align-self-center h3">$85.000</div>
-                            <button class="btn  btn-primary align-middle" type="button" > <img src="assets/img/iconocarrito.png" alt="" height="25px"/>  Reservar Ahora! </button> 
-                        </div>
-                    </div>
-                </div>     
-            </div>
-
-            <! –– vuelta 3 ––>
-            <div class="container align-self-center align-items-center" >
-                <div class="shadow p-3 mb-5 bg-body rounded ">
-                    <div class="row justify-content-center">
-                        <div class="col-auto  align-self-center ">
-                            <img src="assets/img/aero.jpg" class="rounded-circle" alt="..." height="60px" />
-                        </div>
-                        <div class="col-9  align-self-center">
-                            <div class="container align-self-center align-items-cente">
-                                <div class="row row-cols-4 align-self-center">
-                                    <div class="col  text-center align-self-center h6">FECHA</div>
-                                    <div class="col  text-center align-self-center h6 ">BOGOTA </div>
-                                    <div class="col-2  text-center align-self-center h6">DIRECTO</div>
-                                    <div class="col  text-center align-self-center h6">BUCARAMANGA</div>
-
-                                    <div class="col  text-center align-self-center h5">15 Julio </div>
-                                    <div class="col  text-center align-self-center">
-                                        <img src="assets/img/despe.png" alt="" height="25px"/>
-                                        Dorado
-                                    </div>                              
-                                    <div class="col-2  text-center align-self-center">
-                                        <img src="assets/img/rut.png" alt="" height="25px" />                               
-                                    </div>
-                                    <div class="col  text-center align-self-center">
-                                        <img src="assets/img/ateri.png" alt=""height="25px"/>
-                                        Palonegro 
-                                    </div>
-
-                                    <div class="col  text-center align-self-center">(BOG - BGA)</div>
-                                    <div class="col  text-center align-self-center">8:00AM</div>
-                                    <div class="col-2  text-center align-self-center">(1h 30mn)</div>
-                                    <div class="col  text-center align-self-center">9:30AM</div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto  align-self-center">
-                            <div class="col  text-center align-self-center h3">$85.000</div>
-                            <button class="btn  btn-primary align-middle" type="button" > <img src="assets/img/iconocarrito.png" alt="" height="25px"/>  Reservar Ahora! </button> 
+                            <button class="btn  btn-primary align-middle" type="button"> <img src="assets/img/iconocarrito.png" alt="" height="25px"/>  Reservar Ahora! </button> 
+                            
                         </div>
                     </div>
                 </div>     
             </div>
             
-            
+            <%}}%>
+
             <a class="w-100 btn btn-primary boton" href="checkout.jsp" role="button">Buscar</a>
             
         </div>

@@ -42,7 +42,6 @@
         }
         
         %>
-        <script type="text/javascript" src="lib.js"></script>
         <script>
             function stateListener() {
 
@@ -69,7 +68,7 @@
                         <div class="d-inline-flex w-70 radio">
                             <input class="radio-input" type="radio" value="true" name="ida" id="ida" onclick="stateListener()"> 
                             <label for="ida" class="radio-label">Ida</label>
-                            <input class="radio-input" type="radio" value="false" name="idaVuelta" id="idaVuelta" checked onclick="stateListener()">  
+                            <input class="radio-input" type="radio" value="false" name="ida" id="idaVuelta" checked onclick="stateListener()">  
                             <label for="idaVuelta" class="radio-label">Ida y vuelta</label>
                         </div>              
                     </div>
