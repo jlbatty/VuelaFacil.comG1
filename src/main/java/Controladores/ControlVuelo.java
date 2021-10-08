@@ -69,8 +69,11 @@ public class ControlVuelo extends HttpServlet {
     System.out.println(listaVuelos);
     request.setAttribute("listaVuelos", listaVuelos);
     request.setAttribute("ida", ida);
-    if (ida == "false"){
+    
+    if (ida.compareTo("false") == 0){
+      System.out.println("Entre al if!");
       ArrayList<Vuelo> listaVuelosVuelta = vueloDAO.buscarVuelos(fechaRegreso, destino, origen);
+      System.out.println(listaVuelosVuelta);
       request.setAttribute("listaVuelosVuelta", listaVuelosVuelta);
     }
     RequestDispatcher dispatcher = request.getRequestDispatcher("vuelos.jsp");

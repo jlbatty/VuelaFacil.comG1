@@ -96,14 +96,11 @@
             
             <%}%>
             
-            <% 
-              String idaVuelta = request.getAttribute("ida").toString();
-              //if(idaVuelta == "false"){  
-              if(true){
-            %>
-              
+            <% String idaVuelta = (String)request.getAttribute("ida"); %>
+            <c:if test="${ida == "false"}">
+            
             <div class="text-center" style="padding-top: 15px; padding-bottom: 15px"> <h3>Seleccionar Vuelo de VUELTA</h3> </div>
-            <div>${ida}</div>
+            
             <%
                 List<Vuelo> vuelosVuelta = (ArrayList<Vuelo>)request.getAttribute("listaVuelosVuelta");
                 for (Vuelo vuelo:vuelosVuelta) {
@@ -153,8 +150,8 @@
                 </div>     
             </div>
             
-            <%}}%>
-
+            <%}%>
+            </c:if>
             <a class="w-100 btn btn-primary boton" href="checkout.jsp" role="button">Buscar</a>
             
         </div>
